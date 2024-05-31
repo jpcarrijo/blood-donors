@@ -1,8 +1,8 @@
 # Aplicação Doadores de Sangue
 
-##Para a implementação deste projeto a arquitetura foi estruturada em camadas, garantindo que cada componente tenha uma responsabilidade específica.
+## Para a implementação deste projeto a arquitetura foi estruturada em camadas, garantindo que cada componente tenha uma responsabilidade específica.
 
-###Aqui estão os detalhes de cada camada e as interações entre elas:
+### Aqui estão os detalhes de cada camada e as interações entre elas:
 ***
 ## Camada de Apresentação
 Esta camada é responsável por lidar com a base de dados de doadores e apresentar os dados processados.
