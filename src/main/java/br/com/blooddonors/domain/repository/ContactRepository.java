@@ -1,11 +1,12 @@
 package br.com.blooddonors.domain.repository;
 
-import br.com.blooddonors.domain.entities.Donor;
+import br.com.blooddonors.domain.entities.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DonorRepository extends JpaRepository<Donor, Long> {
+public interface ContactRepository extends JpaRepository<Contact, Long> {
 
-    Donor findDonorByCpf(String cpf);
+
+    Contact findContactByEmail(String email);
 }

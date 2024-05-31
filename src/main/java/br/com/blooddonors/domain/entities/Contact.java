@@ -1,11 +1,10 @@
 package br.com.blooddonors.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.blooddonors.application.dto.DonorDTO;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tb_contact")
 public class Contact {
 
 
@@ -16,15 +15,14 @@ public class Contact {
     private String landline;
     private String cellPhone;
 
-    public Contact() {
+    private Contact(Builder builder) {
+	this.id = builder.id;
+	this.email = builder.email;
+	this.landline = builder.landline;
+	this.cellPhone = builder.cellPhone;
     }
 
-    public Contact(Long id, String email, String landline, String cellPhone) {
-	this.id = id;
-	this.email = email;
-	this.landline = landline;
-	this.cellPhone = cellPhone;
-    }
+    public Contact() { }
 
     public Long getId() {
 	return id;
@@ -52,5 +50,47 @@ public class Contact {
 
     public void setCellPhone(String cellPhone) {
 	this.cellPhone = cellPhone;
+    }
+
+
+    public static class Builder {
+
+
+	private Long id;
+	private String email;
+	private String landline;
+	private String cellPhone;
+
+	public Builder id(Long id) {
+	    this.id = id;
+	    return this;
+	}
+
+	public Builder email(String email) {
+	    this.email = email;
+	    return this;
+	}
+
+	public Builder landline(String landline) {
+	    this.landline = landline;
+	    return this;
+	}
+
+	public Builder cellPhone(String cellPhone) {
+	    this.cellPhone = cellPhone;
+	    return this;
+	}
+
+	public Contact build() {
+	    return new Contact(this);
+	}
+    }
+
+    public static Contact builder(DonorDTO dto) {
+	return new Builder()
+	    .email(dto.email())
+	    .landline(dto.landline())
+	    .cellPhone(dto.cellPhone())
+	    .build();
     }
 }

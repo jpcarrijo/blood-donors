@@ -1,11 +1,10 @@
 package br.com.blooddonors.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.blooddonors.application.dto.DonorDTO;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tb_parent")
 public class Parent {
 
 
@@ -15,13 +14,13 @@ public class Parent {
     private String mother;
     private String father;
 
-    public Parent() {
+    private Parent(Builder builder) {
+	this.id = builder.id;
+	this.mother = builder.mother;
+	this.father = builder.father;
     }
 
-    public Parent(Long id, String mother, String father) {
-	this.id = id;
-	this.mother = mother;
-	this.father = father;
+    public Parent() {
     }
 
     public Long getId() {
@@ -42,5 +41,40 @@ public class Parent {
 
     public void setFather(String father) {
 	this.father = father;
+    }
+
+
+    public static class Builder {
+
+
+	private Long id;
+	private String mother;
+	private String father;
+
+	public Builder id(Long id) {
+	    this.id = id;
+	    return this;
+	}
+
+	public Builder mother(String mother) {
+	    this.mother = mother;
+	    return this;
+	}
+
+	public Builder father(String father) {
+	    this.father = father;
+	    return this;
+	}
+
+	public Parent build() {
+	    return new Parent(this);
+	}
+    }
+
+    public static Parent builder(DonorDTO dto) {
+	return new Builder()
+	    .mother(dto.mother())
+	    .father(dto.father())
+	    .build();
     }
 }

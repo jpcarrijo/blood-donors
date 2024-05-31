@@ -1,12 +1,12 @@
 package br.com.blooddonors.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.blooddonors.application.dto.DonorDTO;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tb_address")
 public class Address {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,19 +18,17 @@ public class Address {
     private String state;
     private String cep;
 
-
-    public Address() {
+    private Address(Builder builder) {
+	this.id = builder.id;
+	this.address = builder.address;
+	this.houseNumber = builder.houseNumber;
+	this.neighborhood = builder.neighborhood;
+	this.city = builder.city;
+	this.state = builder.state;
+	this.cep = builder.cep;
     }
 
-    public Address(Long id, String address, Integer houseNumber, String neighborhood, String city, String state,
-		   String cep) {
-	this.id = id;
-	this.address = address;
-	this.houseNumber = houseNumber;
-	this.neighborhood = neighborhood;
-	this.city = city;
-	this.state = state;
-	this.cep = cep;
+    public Address() {
     }
 
     public Long getId() {
@@ -83,5 +81,68 @@ public class Address {
 
     public void setCep(String cep) {
 	this.cep = cep;
+    }
+
+
+    public static class Builder {
+
+
+	private Long id;
+	private String address;
+	private Integer houseNumber;
+	private String neighborhood;
+	private String city;
+	private String state;
+	private String cep;
+
+	public Builder id(Long id) {
+	    this.id = id;
+	    return this;
+	}
+
+	public Builder address(String address) {
+	    this.address = address;
+	    return this;
+	}
+
+	public Builder houseNumber(Integer houseNumber) {
+	    this.houseNumber = houseNumber;
+	    return this;
+	}
+
+	public Builder neighborhood(String neighborhood) {
+	    this.neighborhood = neighborhood;
+	    return this;
+	}
+
+	public Builder city(String city) {
+	    this.city = city;
+	    return this;
+	}
+
+	public Builder state(String state) {
+	    this.state = state;
+	    return this;
+	}
+
+	public Builder cep(String cep) {
+	    this.cep = cep;
+	    return this;
+	}
+
+	public Address build() {
+	    return new Address(this);
+	}
+    }
+
+    public static Address builder(DonorDTO dto) {
+	return new Builder()
+	    .address(dto.address())
+	    .houseNumber(dto.houseNumber())
+	    .neighborhood(dto.neighborhood())
+	    .city(dto.city())
+	    .state(dto.state())
+	    .cep(dto.cep())
+	    .build();
     }
 }

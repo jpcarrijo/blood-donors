@@ -4,7 +4,7 @@
 
 ###Aqui estão os detalhes de cada camada e as interações entre elas:
 ***
-## Camada de Apresentação (Presentation Layer)
+## Camada de Apresentação
 Esta camada é responsável por lidar com a base de dados de doadores e apresentar os dados processados.
 ### Componentes:
 #### Controller: Controladores Spring Boot que recebem requisições HTTP e retornam respostas HTTP.
