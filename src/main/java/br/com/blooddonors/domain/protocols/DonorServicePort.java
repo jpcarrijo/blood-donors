@@ -1,12 +1,13 @@
 package br.com.blooddonors.domain.protocols;
 
+import br.com.blooddonors.application.dto.DataView;
 import br.com.blooddonors.application.dto.DonorDTO;
-import br.com.blooddonors.application.dto.DonorView;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface DonorServicePort {
 
 
-    void saveDonor(List<DonorDTO> dtoList);
+    DataView saveDonor(MultipartFile file);
 }
