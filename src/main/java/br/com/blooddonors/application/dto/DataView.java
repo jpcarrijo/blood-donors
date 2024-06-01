@@ -9,5 +9,6 @@ public record DataView(
     List<ObesePercentage> obesePercentageList,
     AverageBloodTypeByAge averageByAge,
     DonorsToRecipients receivers
+
 ) {
 }

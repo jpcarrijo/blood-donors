@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@CrossOrigin(maxAge = 3600, origins = "http://localhost:5173")
+@CrossOrigin(maxAge = 3600, origins = "*")
 @RequestMapping("/donors")
 public class DonorController {
 

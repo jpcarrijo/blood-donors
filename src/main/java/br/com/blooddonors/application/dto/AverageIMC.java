@@ -5,5 +5,6 @@ import java.util.Map;
 public record AverageIMC(
 
     Map<String, Double> average
+
 ) {
 }

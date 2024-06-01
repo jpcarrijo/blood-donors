@@ -7,8 +7,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/blood_donors_db
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: jpcarrijo
-    password: 130517
+    username: "******"
+    password: "******"
   jpa:
     hibernate:
       ddl-auto: create

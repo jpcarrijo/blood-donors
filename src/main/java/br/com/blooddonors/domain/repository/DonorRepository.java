@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Long> {
 
+
     Donor findDonorByCpf(String cpf);
 }
