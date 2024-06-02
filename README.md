@@ -50,7 +50,7 @@ Para compilar e executar este projeto, precisará ter instalado na máquina:
 
 1. Inicie o servidor:
     ```sh
-    java -jar target/meu-projeto.jar
+    java -jar target/blood-donors.jar
     ```
 
 2. O servidor estará disponível em [http://localhost:8082](http://localhost:8082).
